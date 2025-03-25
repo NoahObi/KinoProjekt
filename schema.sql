@@ -87,7 +87,6 @@ CREATE TABLE Rabattaktion (
     FOREIGN KEY (GültigFürFilmID) REFERENCES Film(FilmID)
 );
 
--- Zusätzliche Tabelle für m:n-Beziehung zwischen Ticket und Snack
 CREATE TABLE Ticket_Snack (
     TicketID INT,
     SnackID INT,
