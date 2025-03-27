@@ -14,9 +14,10 @@ CREATE TABLE Rabattaktion (
     Name VARCHAR2(100) NOT NULL,
     Prozentsatz NUMBER(3,0) CHECK (Prozentsatz BETWEEN 0 AND 100),
     Startdatum DATE,
-    Enddatum DATE CHECK (Enddatum >= Startdatum),
+    Enddatum DATE,
     FilmID NUMBER,
-    FOREIGN KEY (FilmID) REFERENCES Film(FilmID)
+    FOREIGN KEY (FilmID) REFERENCES Film(FilmID),
+    CONSTRAINT chk_datum CHECK (Enddatum >= Startdatum)
 );
 
 CREATE TABLE Film (
@@ -62,7 +63,7 @@ CREATE TABLE Kunde (
     Nachname VARCHAR2(100) NOT NULL,
     Email VARCHAR2(255) UNIQUE NOT NULL,
     Telefon VARCHAR2(20),
-    Geburtsdatum DATE CHECK (Geburtsdatum <= CURDATE()),
+    Geburtsdatum DATE CHECK (Geburtsdatum <= SYSDATE),
     Adresse VARCHAR2(100)
 );
 
