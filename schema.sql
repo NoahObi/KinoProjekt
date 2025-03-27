@@ -1,5 +1,5 @@
 CREATE TABLE Rabattaktion (
-    RabattID INT PRIMARY KEY,
+    RabattID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Name VARCHAR(100) NOT NULL,
     Prozentsatz INT CHECK (Prozentsatz BETWEEN 0 AND 99),
     Startdatum DATE,
@@ -9,7 +9,7 @@ CREATE TABLE Rabattaktion (
 );
 
 CREATE TABLE Film (
-    FilmID INT PRIMARY KEY,
+    FilmID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Titel VARCHAR(255) NOT NULL,
     Genre VARCHAR(100) NOT NULL,
     Dauer INT CHECK (Dauer > 0),
@@ -20,7 +20,7 @@ CREATE TABLE Film (
 );
 
 CREATE TABLE Vorstellung (
-    VorstellungID INT PRIMARY KEY,
+    VorstellungID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     FilmID INT,
     SaalID INT,
     Startzeit DATETIME NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE Vorstellung (
 
 
 CREATE TABLE Saal (
-    SaalID INT PRIMARY KEY,
+    SaalID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Name VARCHAR(255) UNIQUE NOT NULL,
     Kapazität INT CHECK (Kapazität > 0),
     Typ VARCHAR(100) DEFAULT 'Standard'
@@ -41,7 +41,7 @@ CREATE TABLE Saal (
 
 
 CREATE TABLE Kunde (
-    KundeID INT PRIMARY KEY,
+    KundeID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Vorname VARCHAR(100) NOT NULL,
     Nachname VARCHAR(100) NOT NULL,
     Email VARCHAR(255) UNIQUE NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE Kunde (
 );
 
 CREATE TABLE Reservierung (
-    ReservierungID INT PRIMARY KEY,
+    ReservierungID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     KundeID INT,
     VorstellungID INT,
     Reservierungsdatum DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -63,7 +63,7 @@ CREATE TABLE Reservierung (
 
 
 CREATE TABLE Zahlung (
-    ZahlungsID INT PRIMARY KEY,
+    ZahlungsID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Betrag DECIMAL(5,2) CHECK (Betrag >= 0),
     Zahlungsdatum DATETIME DEFAULT CURRENT_TIMESTAMP,
     Zahlungsmethode VARCHAR(50) CHECK (Zahlungsmethode IN ('Kreditkarte', 'PayPal', 'Bar', 'Überweisung')),
@@ -72,10 +72,10 @@ CREATE TABLE Zahlung (
 );
 
 CREATE TABLE Ticket (
-    TicketID INT PRIMARY KEY,
+    TicketID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     VorstellungID INT,
     KundeID INT,
-    Sitzplatz VARCHAR(10) CHECK (Sitzplatz REGEXP '^[A-Z][0-9]+$'),
+    Sitzplatz VARCHAR(10),
     Preis DECIMAL(5,2) CHECK (Preis >= 0),
     ZahlungsID INT,
     ReservierungID INT,
@@ -86,7 +86,7 @@ CREATE TABLE Ticket (
 );
 
 CREATE TABLE Snack (
-    SnackID INT PRIMARY KEY,
+    SnackID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Name VARCHAR(100) UNIQUE NOT NULL,
     Preis DECIMAL(5,2) CHECK (Preis >= 0),
     Beschreibung TEXT

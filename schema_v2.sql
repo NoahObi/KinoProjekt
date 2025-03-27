@@ -1,33 +1,31 @@
 CREATE TABLE Zahlungsmethode (
     ZahlungsmethodeID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    Methode VARCHAR(50) UNIQUE NOT NULL CHECK (Methode IN ('Kreditkarte', 'Bar', 'Debitkarte'))
+    Methode VARCHAR2(50) UNIQUE NOT NULL CHECK (Methode IN ('Kreditkarte', 'Bar', 'Debitkarte'))
 );
 
 CREATE TABLE Preis (
     PreisID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Betrag DECIMAL(5,2) CHECK (Betrag >= 0),
-    Beschreibung VARCHAR(100)
+    Beschreibung VARCHAR2(100)
 );
 
 CREATE TABLE Rabattaktion (
     RabattID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    Name VARCHAR(100) NOT NULL,
-    Prozentsatz NUMBER CHECK (Prozentsatz BETWEEN 0 AND 99),
+    Name VARCHAR2(100) NOT NULL,
+    Prozentsatz NUMBER(3,0) CHECK (Prozentsatz BETWEEN 0 AND 100),
     Startdatum DATE,
     Enddatum DATE CHECK (Enddatum >= Startdatum),
     FilmID NUMBER,
-    FOREIGN KEY (GültigFürFilmID) REFERENCES Film(FilmID)
+    FOREIGN KEY (FilmID) REFERENCES Film(FilmID)
 );
 
 CREATE TABLE Film (
     FilmID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    Titel VARCHAR(255) NOT NULL,
-    Genre VARCHAR(100) NOT NULL,
+    Titel VARCHAR2(255) NOT NULL,
+    Genre VARCHAR2(100) NOT NULL,
     Dauer NUMBER CHECK (Dauer > 0),
-    Startjahr NUMBER CHECK (Startjahr >= 1900),
-    Beschreibung TEXT,
-    Regisseur VARCHAR(255) NOT NULL,
-    Darsteller TEXT
+    Startjahr NUMBER(4,0) CHECK (Startjahr >= 1900),
+    Beschreibung VARCHAR2(1000)
 );
 
 CREATE TABLE Film_Rabattaktion (
@@ -53,19 +51,19 @@ CREATE TABLE Vorstellung (
 
 CREATE TABLE Saal (
     SaalID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    Name VARCHAR(255) UNIQUE NOT NULL,
-    Kapazität NUMBER CHECK (Kapazität > 0),
-    Typ VARCHAR(100) DEFAULT 'Standard'
+    Name VARCHAR2(255) UNIQUE NOT NULL,
+    Kapazitaet NUMBER(3,0) CHECK (Kapazitaet > 0),
+    Typ VARCHAR2(100) DEFAULT 'Standard'
 );
 
 CREATE TABLE Kunde (
     KundeID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    Vorname VARCHAR(100) NOT NULL,
-    Nachname VARCHAR(100) NOT NULL,
-    Email VARCHAR(255) UNIQUE NOT NULL,
-    Telefon VARCHAR(20),
+    Vorname VARCHAR2(100) NOT NULL,
+    Nachname VARCHAR2(100) NOT NULL,
+    Email VARCHAR2(255) UNIQUE NOT NULL,
+    Telefon VARCHAR2(20),
     Geburtsdatum DATE CHECK (Geburtsdatum <= CURDATE()),
-    Adresse TEXT
+    Adresse VARCHAR2(100)
 );
 
 CREATE TABLE Reservierung (
@@ -73,7 +71,7 @@ CREATE TABLE Reservierung (
     KundeID NUMBER,
     VorstellungID NUMBER,
     Reservierungsdatum DATE DEFAULT SYSDATE,
-    Reservierungsstatus VARCHAR(50) DEFAULT 'Ausstehend',
+    Reservierungsstatus VARCHAR2(50) DEFAULT 'Ausstehend',
     FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID),
     FOREIGN KEY (VorstellungID) REFERENCES Vorstellung(VorstellungID)
 );
@@ -81,7 +79,7 @@ CREATE TABLE Reservierung (
 CREATE TABLE Zahlung (
     ZahlungsID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Betrag DECIMAL(5,2) CHECK (Betrag >= 0),
-    Zahlungsdatum DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Zahlungsdatum DATE DEFAULT SYSDATE,
     ZahlungsmethodeID NUMBER,
     KundeID NUMBER,
     FOREIGN KEY (ZahlungsmethodeID) REFERENCES Zahlungsmethode(ZahlungsmethodeID),
@@ -92,7 +90,7 @@ CREATE TABLE Ticket (
     TicketID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     VorstellungID NUMBER,
     KundeID NUMBER,
-    Sitzplatz VARCHAR(10),
+    Sitzplatz VARCHAR2(10),
     PreisID NUMBER,
     ZahlungsID NUMBER,
     ReservierungID NUMBER,
@@ -105,16 +103,16 @@ CREATE TABLE Ticket (
 
 CREATE TABLE Snack (
     SnackID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    Name VARCHAR(100) UNIQUE NOT NULL,
+    Name VARCHAR2(100) UNIQUE NOT NULL,
     PreisID NUMBER,
-    Beschreibung TEXT,
+    Beschreibung VARCHAR2(100),
     FOREIGN KEY (PreisID) REFERENCES Preis(PreisID)
 );
 
 CREATE TABLE Ticket_Snack (
     TicketID NUMBER,
     SnackID NUMBER,
-    Menge NUMBER CHECK (Menge >= 0),
+    Menge NUMBER(3,0) CHECK (Menge >= 0),
     PRIMARY KEY (TicketID, SnackID),
     FOREIGN KEY (TicketID) REFERENCES Ticket(TicketID),
     FOREIGN KEY (SnackID) REFERENCES Snack(SnackID)
@@ -125,8 +123,8 @@ CREATE TABLE Snack_Kauf (
     SnackID NUMBER,
     KundeID NUMBER,
     ZahlungsID NUMBER,
-    Menge NUMBER CHECK (Menge > 0),
-    Kaufdatum DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Menge NUMBER(3,0) CHECK (Menge > 0),
+    Kaufdatum DATE DEFAULT SYSDATE,
     FOREIGN KEY (SnackID) REFERENCES Snack(SnackID),
     FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID),
     FOREIGN KEY (ZahlungsID) REFERENCES Zahlung(ZahlungsID)
