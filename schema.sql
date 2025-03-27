@@ -1,19 +1,22 @@
+CREATE TABLE Rabattaktion (
+    RabattID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Prozentsatz INT CHECK (Prozentsatz BETWEEN 0 AND 99),
+    Startdatum DATE,
+    Enddatum DATE CHECK (Enddatum >= Startdatum),
+    GültigFürFilmID INT,
+    FOREIGN KEY (GültigFürFilmID) REFERENCES Film(FilmID)
+);
+
 CREATE TABLE Film (
     FilmID INT PRIMARY KEY,
     Titel VARCHAR(255) NOT NULL,
     Genre VARCHAR(100) NOT NULL,
     Dauer INT CHECK (Dauer > 0),
-    Startjahr INT CHECK (Startjahr >= 1888),
+    Startjahr INT CHECK (Startjahr >= 1900),
     Beschreibung TEXT,
     Regisseur VARCHAR(255) NOT NULL,
     Darsteller TEXT
-);
-
-CREATE TABLE Saal (
-    SaalID INT PRIMARY KEY,
-    Name VARCHAR(255) UNIQUE NOT NULL,
-    Kapazität INT CHECK (Kapazität > 0),
-    Typ VARCHAR(100) DEFAULT 'Standard'
 );
 
 CREATE TABLE Vorstellung (
@@ -27,6 +30,15 @@ CREATE TABLE Vorstellung (
     FOREIGN KEY (SaalID) REFERENCES Saal(SaalID),
     CONSTRAINT CHK_Zeit CHECK (Endzeit > Startzeit)
 );
+
+
+CREATE TABLE Saal (
+    SaalID INT PRIMARY KEY,
+    Name VARCHAR(255) UNIQUE NOT NULL,
+    Kapazität INT CHECK (Kapazität > 0),
+    Typ VARCHAR(100) DEFAULT 'Standard'
+);
+
 
 CREATE TABLE Kunde (
     KundeID INT PRIMARY KEY,
@@ -48,6 +60,17 @@ CREATE TABLE Reservierung (
     FOREIGN KEY (VorstellungID) REFERENCES Vorstellung(VorstellungID)
 );
 
+
+
+CREATE TABLE Zahlung (
+    ZahlungsID INT PRIMARY KEY,
+    Betrag DECIMAL(5,2) CHECK (Betrag >= 0),
+    Zahlungsdatum DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Zahlungsmethode VARCHAR(50) CHECK (Zahlungsmethode IN ('Kreditkarte', 'PayPal', 'Bar', 'Überweisung')),
+    KundeID INT,
+    FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID)
+);
+
 CREATE TABLE Ticket (
     TicketID INT PRIMARY KEY,
     VorstellungID INT,
@@ -62,15 +85,6 @@ CREATE TABLE Ticket (
     FOREIGN KEY (ReservierungID) REFERENCES Reservierung(ReservierungID)
 );
 
-CREATE TABLE Zahlung (
-    ZahlungsID INT PRIMARY KEY,
-    Betrag DECIMAL(5,2) CHECK (Betrag >= 0),
-    Zahlungsdatum DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Zahlungsmethode VARCHAR(50) CHECK (Zahlungsmethode IN ('Kreditkarte', 'PayPal', 'Bar', 'Überweisung')),
-    KundeID INT,
-    FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID)
-);
-
 CREATE TABLE Snack (
     SnackID INT PRIMARY KEY,
     Name VARCHAR(100) UNIQUE NOT NULL,
@@ -78,20 +92,10 @@ CREATE TABLE Snack (
     Beschreibung TEXT
 );
 
-CREATE TABLE Rabattaktion (
-    RabattID INT PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Prozentsatz INT CHECK (Prozentsatz BETWEEN 0 AND 100),
-    Startdatum DATE,
-    Enddatum DATE CHECK (Enddatum >= Startdatum),
-    GültigFürFilmID INT,
-    FOREIGN KEY (GültigFürFilmID) REFERENCES Film(FilmID)
-);
-
 CREATE TABLE Ticket_Snack (
     TicketID INT,
     SnackID INT,
-    Menge INT CHECK (Menge > 0),
+    Menge INT CHECK (Menge >= 0),
     PRIMARY KEY (TicketID, SnackID),
     FOREIGN KEY (TicketID) REFERENCES Ticket(TicketID),
     FOREIGN KEY (SnackID) REFERENCES Snack(SnackID)
