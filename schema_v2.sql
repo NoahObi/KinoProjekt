@@ -63,7 +63,7 @@ CREATE TABLE Kunde (
     Nachname VARCHAR2(100) NOT NULL,
     Email VARCHAR2(255) UNIQUE NOT NULL,
     Telefon VARCHAR2(20),
-    Geburtsdatum DATE CHECK (Geburtsdatum <= SYSDATE),
+    Geburtsdatum DATE CHECK (Geburtsdatum <= TRUNC(SYSDATE)),
     Adresse VARCHAR2(100)
 );
 
