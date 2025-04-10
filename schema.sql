@@ -1,11 +1,19 @@
-CREATE TABLE Rabattaktion (
-    RabattID INT PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Prozentsatz INT CHECK (Prozentsatz BETWEEN 0 AND 99),
-    Startdatum DATE,
-    Enddatum DATE CHECK (Enddatum >= Startdatum),
-    GültigFürFilmID INT,
-    FOREIGN KEY (GültigFürFilmID) REFERENCES Film(FilmID)
+DROP TABLE Ticket_Snack;
+DROP TABLE Ticket;
+DROP TABLE Zahlung;
+DROP TABLE Reservierung;
+DROP TABLE Vorstellung;
+DROP TABLE Rabattaktion;
+DROP TABLE Film;
+DROP TABLE Saal;
+DROP TABLE Snack;
+DROP TABLE Kunde;
+
+CREATE TABLE Saal (
+    SaalID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    Name VARCHAR2(255) UNIQUE NOT NULL,
+    Kapazitaet NUMBER(3,0) CHECK (Kapazitaet > 0),
+    Typ VARCHAR2(100) DEFAULT 'Standard'
 );
 
 CREATE TABLE Film (
@@ -14,31 +22,9 @@ CREATE TABLE Film (
     Genre VARCHAR(100) NOT NULL,
     Dauer INT CHECK (Dauer > 0),
     Startjahr INT CHECK (Startjahr >= 1900),
-    Beschreibung TEXT,
-    Regisseur VARCHAR(255) NOT NULL,
-    Darsteller TEXT
+    Beschreibung VARCHAR(100),
+    Regisseur VARCHAR(255) NOT NULL
 );
-
-CREATE TABLE Vorstellung (
-    VorstellungID INT PRIMARY KEY,
-    FilmID INT,
-    SaalID INT,
-    Startzeit DATETIME NOT NULL,
-    Endzeit DATETIME NOT NULL,
-    Preis DECIMAL(5,2) CHECK (Preis >= 0),
-    FOREIGN KEY (FilmID) REFERENCES Film(FilmID),
-    FOREIGN KEY (SaalID) REFERENCES Saal(SaalID),
-    CONSTRAINT CHK_Zeit CHECK (Endzeit > Startzeit)
-);
-
-
-CREATE TABLE Saal (
-    SaalID INT PRIMARY KEY,
-    Name VARCHAR(255) UNIQUE NOT NULL,
-    Kapazität INT CHECK (Kapazität > 0),
-    Typ VARCHAR(100) DEFAULT 'Standard'
-);
-
 
 CREATE TABLE Kunde (
     KundeID INT PRIMARY KEY,
@@ -46,26 +32,47 @@ CREATE TABLE Kunde (
     Nachname VARCHAR(100) NOT NULL,
     Email VARCHAR(255) UNIQUE NOT NULL,
     Telefon VARCHAR(20),
-    Geburtsdatum DATE CHECK (Geburtsdatum <= CURDATE()),
-    Adresse TEXT
+    Geburtsdatum DATE CHECK (Geburtsdatum <= SYSDATE),
+    Adresse VARCHAR(100)
+);
+
+CREATE TABLE Vorstellung (
+    VorstellungID INT PRIMARY KEY,
+    FilmID INT,
+    SaalID INT,
+    Startzeit DATE NOT NULL,
+    Endzeit DATE NOT NULL,
+    Preis DECIMAL(5,2) CHECK (Preis >= 0),
+    FOREIGN KEY (FilmID) REFERENCES Film(FilmID),
+    FOREIGN KEY (SaalID) REFERENCES Saal(SaalID),
+    CONSTRAINT CHK_Zeit CHECK (Endzeit > Startzeit)
+);
+
+CREATE TABLE Rabattaktion (
+    RabattID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Prozentsatz INT CHECK (Prozentsatz BETWEEN 0 AND 100),
+    Startdatum DATE,
+    Enddatum DATE,
+    FilmID INT,
+    FOREIGN KEY (FilmID) REFERENCES Film(FilmID),
+    CONSTRAINT chk_datum CHECK (Enddatum >= Startdatum)
 );
 
 CREATE TABLE Reservierung (
     ReservierungID INT PRIMARY KEY,
     KundeID INT,
     VorstellungID INT,
-    Reservierungsdatum DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Reservierungsdatum DATE DEFAULT SYSDATE,
     Reservierungsstatus VARCHAR(50) DEFAULT 'Ausstehend',
     FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID),
     FOREIGN KEY (VorstellungID) REFERENCES Vorstellung(VorstellungID)
 );
 
-
-
 CREATE TABLE Zahlung (
     ZahlungsID INT PRIMARY KEY,
     Betrag DECIMAL(5,2) CHECK (Betrag >= 0),
-    Zahlungsdatum DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Zahlungsdatum DATE DEFAULT CURRENT_TIMESTAMP,
     Zahlungsmethode VARCHAR(50) CHECK (Zahlungsmethode IN ('Kreditkarte', 'PayPal', 'Bar', 'Überweisung')),
     KundeID INT,
     FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID)
@@ -75,7 +82,7 @@ CREATE TABLE Ticket (
     TicketID INT PRIMARY KEY,
     VorstellungID INT,
     KundeID INT,
-    Sitzplatz VARCHAR(10) CHECK (Sitzplatz REGEXP '^[A-Z][0-9]+$'),
+    Sitzplatz VARCHAR(10),
     Preis DECIMAL(5,2) CHECK (Preis >= 0),
     ZahlungsID INT,
     ReservierungID INT,
@@ -89,7 +96,7 @@ CREATE TABLE Snack (
     SnackID INT PRIMARY KEY,
     Name VARCHAR(100) UNIQUE NOT NULL,
     Preis DECIMAL(5,2) CHECK (Preis >= 0),
-    Beschreibung TEXT
+    Beschreibung VARCHAR(100)
 );
 
 CREATE TABLE Ticket_Snack (
