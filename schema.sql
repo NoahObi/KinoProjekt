@@ -17,7 +17,7 @@ CREATE TABLE Saal (
 );
 
 CREATE TABLE Film (
-    FilmID INT PRIMARY KEY,
+    FilmID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Titel VARCHAR(255) NOT NULL,
     Genre VARCHAR(100) NOT NULL,
     Dauer INT CHECK (Dauer > 0),
@@ -27,7 +27,7 @@ CREATE TABLE Film (
 );
 
 CREATE TABLE Kunde (
-    KundeID INT PRIMARY KEY,
+    KundeID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Vorname VARCHAR(100) NOT NULL,
     Nachname VARCHAR(100) NOT NULL,
     Email VARCHAR(255) UNIQUE NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE Rabattaktion (
 );
 
 CREATE TABLE Reservierung (
-    ReservierungID INT PRIMARY KEY,
+    ReservierungID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     KundeID INT,
     VorstellungID INT,
     Reservierungsdatum DATE DEFAULT SYSDATE,
@@ -70,7 +70,7 @@ CREATE TABLE Reservierung (
 );
 
 CREATE TABLE Zahlung (
-    ZahlungsID INT PRIMARY KEY,
+    ZahlungsID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Betrag DECIMAL(5,2) CHECK (Betrag >= 0),
     Zahlungsdatum DATE DEFAULT CURRENT_TIMESTAMP,
     Zahlungsmethode VARCHAR(50) CHECK (Zahlungsmethode IN ('Kreditkarte', 'PayPal', 'Bar', 'Überweisung')),
@@ -79,7 +79,7 @@ CREATE TABLE Zahlung (
 );
 
 CREATE TABLE Ticket (
-    TicketID INT PRIMARY KEY,
+    TicketID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     VorstellungID INT,
     KundeID INT,
     Sitzplatz VARCHAR(10),
@@ -93,7 +93,7 @@ CREATE TABLE Ticket (
 );
 
 CREATE TABLE Snack (
-    SnackID INT PRIMARY KEY,
+    SnackID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Name VARCHAR(100) UNIQUE NOT NULL,
     Preis DECIMAL(5,2) CHECK (Preis >= 0),
     Beschreibung VARCHAR(100)
