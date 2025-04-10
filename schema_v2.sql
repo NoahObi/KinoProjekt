@@ -1,3 +1,5 @@
+SET SERVEROUTPUT ON;
+
 CREATE TABLE Zahlungsmethode (
     ZahlungsmethodeID NUMBER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     Methode VARCHAR2(50) UNIQUE NOT NULL CHECK (Methode IN ('Kreditkarte', 'Bar', 'Debitkarte'))
@@ -130,3 +132,62 @@ CREATE TABLE Snack_Kauf (
     FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID),
     FOREIGN KEY (ZahlungsID) REFERENCES Zahlung(ZahlungsID)
 );
+
+
+--Business-Case 1: Kinoprogramm verwalten & anzeigen
+
+BEGIN
+  FOR rec IN (
+    SELECT f.Titel, v.Startzeit, v.Endzeit, s.Name AS Saal
+    FROM Vorstellung v
+    JOIN Film f ON f.FilmID = v.FilmID
+    JOIN Saal s ON s.SaalID = v.SaalID
+    WHERE TRUNC(v.Startzeit) = TRUNC(SYSDATE)
+    ORDER BY v.Startzeit
+  ) LOOP
+    DBMS_OUTPUT.PUT_LINE('Titel: ' || rec.Titel || 
+                         ', Start: ' || TO_CHAR(rec.Startzeit, 'HH24:MI') || 
+                         ', Ende: ' || TO_CHAR(rec.Endzeit, 'HH24:MI') || 
+                         ', Saal: ' || rec.Saal);
+  END LOOP;
+END;
+/
+
+
+--Business-Case 2: Ticketverkauf inkl. Snacks und Zahlungen
+
+BEGIN
+  FOR rec IN (
+    SELECT f.Titel, v.Startzeit, sn.Name AS Snack, SUM(ts.Menge) AS GesamtMenge
+    FROM Ticket t
+    JOIN Vorstellung v ON t.VorstellungID = v.VorstellungID
+    JOIN Film f ON f.FilmID = v.FilmID
+    JOIN Ticket_Snack ts ON ts.TicketID = t.TicketID
+    JOIN Snack sn ON sn.SnackID = ts.SnackID
+    GROUP BY f.Titel, v.Startzeit, sn.Name
+    ORDER BY f.Titel, v.Startzeit
+  ) LOOP
+    DBMS_OUTPUT.PUT_LINE('Titel: ' || rec.Titel || 
+                         ', Start: ' || TO_CHAR(rec.Startzeit, 'DD.MM.YY HH24:MI') || 
+                         ', Snack: ' || rec.Snack || 
+                         ', Menge: ' || rec.GesamtMenge);
+  END LOOP;
+END;
+/
+
+
+--Business-Case 3: Rabattaktionen verwalten & auswerten
+
+BEGIN
+  FOR rec IN (
+    SELECT f.Titel, r.Name AS Rabattaktion, r.Prozentsatz
+    FROM Rabattaktion r
+    JOIN Film f ON r.FilmID = f.FilmID
+    WHERE TRUNC(SYSDATE) BETWEEN TRUNC(r.Startdatum) AND TRUNC(r.Enddatum)
+  ) LOOP
+    DBMS_OUTPUT.PUT_LINE('Titel: ' || rec.Titel || 
+                         ', Rabattaktion: ' || rec.Rabattaktion || 
+                         ', Prozent: ' || rec.Prozentsatz || '%');
+  END LOOP;
+END;
+/
