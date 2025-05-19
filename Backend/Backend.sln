@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kinoprojekt", "Kinoprojekt\Kinoprojekt.csproj", "{4BFC8F55-64B4-44C3-AB32-574870265ADA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{9DC7DBFB-6490-4183-8086-ADBB719CCB4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BFC8F55-64B4-44C3-AB32-574870265ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFC8F55-64B4-44C3-AB32-574870265ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFC8F55-64B4-44C3-AB32-574870265ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFC8F55-64B4-44C3-AB32-574870265ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC7DBFB-6490-4183-8086-ADBB719CCB4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC7DBFB-6490-4183-8086-ADBB719CCB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC7DBFB-6490-4183-8086-ADBB719CCB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC7DBFB-6490-4183-8086-ADBB719CCB4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
