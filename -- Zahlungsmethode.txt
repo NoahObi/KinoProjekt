@@ -1,0 +1,52 @@
+-- Zahlungsmethode
+INSERT INTO Zahlungsmethode (ZahlungsmethodeID, Methode) VALUES (1, 'Bar');
+INSERT INTO Zahlungsmethode (ZahlungsmethodeID, Methode) VALUES (2, 'Kreditkarte');
+INSERT INTO Zahlungsmethode (ZahlungsmethodeID, Methode) VALUES (3, 'Debitkarte');
+
+-- Saal
+INSERT INTO Saal (SaalID, SaalName, Kapazitaet, Typ) VALUES (1, 'Saal A', 100, 'Standard');
+INSERT INTO Saal (SaalID, SaalName, Kapazitaet, Typ) VALUES (2, 'Saal B', 150, 'Premium');
+
+-- Film
+INSERT INTO Film (FilmID, Titel, Genre, Dauer, Startjahr, Beschreibung) VALUES (1, 'Inception', 'Sci-Fi', 148, 2010, 'Thriller über Träume');
+INSERT INTO Film (FilmID, Titel, Genre, Dauer, Startjahr, Beschreibung) VALUES (2, 'The Matrix', 'Action', 136, 1999, 'Klassischer Cyberpunk-Film');
+
+-- Rabattaktion
+INSERT INTO Rabattaktion (RabattID, Name, Prozentsatz, Startdatum, Enddatum, FilmID) 
+VALUES (2, 'Sommeraktion', 10, TO_DATE('2025-06-18', 'YYYY-MM-DD'), TO_DATE('2025-08-21', 'YYYY-MM-DD'), 1);
+
+-- Preis
+INSERT INTO Preis (PreisID, Betrag, Beschreibung) VALUES (1, 9.99, 'Standardpreis');
+INSERT INTO Preis (PreisID, Betrag, Beschreibung) VALUES (2, 12.99, 'Premiumpreis');
+-- Kunde
+INSERT INTO Kunde (KundeID, Vorname, Nachname, Email, Telefon, Geburtsdatum, Adresse)
+VALUES (1, 'Max', 'Mustermann', 'max.mustermann@example.com', '0123456789', TO_DATE('1990-01-01', 'YYYY-MM-DD'), 'Musterstraße 1');
+
+-- Vorstellung
+INSERT INTO Vorstellung (VorstellungID, FilmID, SaalID, Startzeit, Endzeit, PreisID)
+VALUES (2, 1, 1, TO_TIMESTAMP('2025-05-18 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2025-05-21 21:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1);
+select * from vorstellung;
+commit;
+-- Reservierung
+INSERT INTO Reservierung (ReservierungID, KundeID, VorstellungID, Reservierungsdatum, Reservierungsstatus)
+VALUES (1, 1, 1, SYSDATE, 'Ausstehend');
+
+-- Zahlung
+INSERT INTO Zahlung (ZahlungsID, Betrag, Zahlungsdatum, ZahlungsmethodeID, KundeID)
+VALUES (1, 9.99, SYSDATE, 2, 1);
+
+-- Ticket
+INSERT INTO Ticket (TicketID, VorstellungID, KundeID, Sitzplatz, PreisID, ZahlungsID, ReservierungID)
+VALUES (1, 1, 1, 'A1', 1, 1, 1);
+
+-- Snack
+INSERT INTO Snack (SnackID, Name, PreisID, Beschreibung)
+VALUES (1, 'Popcorn', 1, 'Großer Becher Popcorn');
+
+-- Ticket_Snack
+INSERT INTO Ticket_Snack (TicketID, SnackID, Menge)
+VALUES (1, 1, 2);
+
+-- Snack_Kauf
+INSERT INTO Snack_Kauf (SnackKaufID, SnackID, KundeID, ZahlungsID, Menge, Kaufdatum)
+VALUES (1, 1, 1, 1, 2, SYSDATE);

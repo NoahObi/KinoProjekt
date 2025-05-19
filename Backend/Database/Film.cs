@@ -13,7 +13,7 @@ public partial class Film
 
     public decimal? Dauer { get; set; }
 
-    public byte? Startjahr { get; set; }
+    public int? Startjahr { get; set; }
 
     public string? Beschreibung { get; set; }
 

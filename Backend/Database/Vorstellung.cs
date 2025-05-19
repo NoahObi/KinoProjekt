@@ -15,11 +15,11 @@ public partial class Vorstellung
 
     public DateTime Endzeit { get; set; }
 
-    public decimal? Preisid { get; set; }
+    public int? Preisid { get; set; }
 
     public virtual Film? Film { get; set; }
 
-    public virtual Prei? Preis { get; set; }
+    public virtual Preis? Preis { get; set; }
 
     public virtual ICollection<Reservierung> Reservierungs { get; set; } = new List<Reservierung>();
 

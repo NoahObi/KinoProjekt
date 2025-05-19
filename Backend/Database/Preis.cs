@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Database;
 
-public partial class Prei
+public partial class Preis
 {
-    public decimal Preisid { get; set; }
+    public int Preisid { get; set; }
 
     public decimal? Betrag { get; set; }
 

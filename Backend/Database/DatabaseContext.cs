@@ -21,7 +21,7 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<Kunde> Kundes { get; set; }
 
-    public virtual DbSet<Prei> Preis { get; set; }
+    public virtual DbSet<Preis> Preis { get; set; }
 
     public virtual DbSet<Rabattaktion> Rabattaktions { get; set; }
 
@@ -55,6 +55,12 @@ public partial class DatabaseContext : DbContext
 
         modelBuilder.Entity<EmpDetailsView>(entity =>
         {
+            
+
+
+
+
+
             entity
                 .HasNoKey()
                 .ToView("EMP_DETAILS_VIEW");
@@ -210,13 +216,14 @@ public partial class DatabaseContext : DbContext
                 .HasColumnName("VORNAME");
         });
 
-        modelBuilder.Entity<Prei>(entity =>
+        modelBuilder.Entity<Preis>(entity =>
         {
             entity.HasKey(e => e.Preisid).HasName("SYS_C00196449");
 
             entity.ToTable("PREIS");
 
             entity.Property(e => e.Preisid)
+            .HasConversion<decimal>()
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER")
                 .HasColumnName("PREISID");
@@ -343,6 +350,8 @@ public partial class DatabaseContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("NAME");
             entity.Property(e => e.Preisid)
+
+            .HasConversion<decimal>()
                 .HasColumnType("NUMBER")
                 .HasColumnName("PREISID");
 
@@ -405,6 +414,7 @@ public partial class DatabaseContext : DbContext
                 .HasColumnType("NUMBER")
                 .HasColumnName("KUNDEID");
             entity.Property(e => e.Preisid)
+            .HasConversion<decimal>()
                 .HasColumnType("NUMBER")
                 .HasColumnName("PREISID");
             entity.Property(e => e.Reservierungid)
@@ -486,6 +496,7 @@ public partial class DatabaseContext : DbContext
                 .HasColumnType("NUMBER")
                 .HasColumnName("FILMID");
             entity.Property(e => e.Preisid)
+            .HasConversion<decimal>()
                 .HasColumnType("NUMBER")
                 .HasColumnName("PREISID");
             entity.Property(e => e.Saalid)
@@ -574,6 +585,10 @@ public partial class DatabaseContext : DbContext
         modelBuilder.HasSequence("SEQ_ZAHLUNG");
         modelBuilder.HasSequence("SEQ_ZAHLUNGSMETHODE");
 
+
+        
+
+        
         OnModelCreatingPartial(modelBuilder);
     }
 

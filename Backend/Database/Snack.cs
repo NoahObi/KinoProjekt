@@ -9,11 +9,11 @@ public partial class Snack
 
     public string Name { get; set; } = null!;
 
-    public decimal? Preisid { get; set; }
+    public int? Preisid { get; set; }
 
     public string? Beschreibung { get; set; }
 
-    public virtual Prei? Preis { get; set; }
+    public virtual Preis? Preis { get; set; }
 
     public virtual ICollection<SnackKauf> SnackKaufs { get; set; } = new List<SnackKauf>();
 

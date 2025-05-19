@@ -9,7 +9,7 @@ public partial class TicketSnack
 
     public decimal Snackid { get; set; }
 
-    public byte? Menge { get; set; }
+    public int? Menge { get; set; }
 
     public virtual Snack Snack { get; set; } = null!;
 

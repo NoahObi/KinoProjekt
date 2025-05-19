@@ -13,7 +13,7 @@ public partial class Ticket
 
     public string? Sitzplatz { get; set; }
 
-    public decimal? Preisid { get; set; }
+    public int? Preisid { get; set; }
 
     public decimal? Zahlungsid { get; set; }
 
@@ -21,7 +21,7 @@ public partial class Ticket
 
     public virtual Kunde? Kunde { get; set; }
 
-    public virtual Prei? Preis { get; set; }
+    public virtual Preis? Preis { get; set; }
 
     public virtual Reservierung? Reservierung { get; set; }
 
