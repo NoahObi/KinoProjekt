@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|c:\\htl\\4.klasse\\dbi\\kinoprojekt\\kinoproject\\kinoproject\\kinoproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|solutionrelative:kinoproject\\kinoproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C024644A-F0F6-4EE1-947D-6179F95F99D5}|KinoprojectLibary\\KinoprojectLibary.csproj|c:\\htl\\4.klasse\\dbi\\kinoprojekt\\kinoproject\\kinoprojectlibary\\kinoprojectlibary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C024644A-F0F6-4EE1-947D-6179F95F99D5}|KinoprojectLibary\\KinoprojectLibary.csproj|solutionrelative:kinoprojectlibary\\kinoprojectlibary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|c:\\htl\\4.klasse\\dbi\\kinoprojekt\\kinoproject\\kinoproject\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|solutionrelative:kinoproject\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|c:\\htl\\4.klasse\\dbi\\kinoprojekt\\kinoproject\\kinoproject\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|solutionrelative:kinoproject\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|c:\\htl\\4.klasse\\dbi\\kinoprojekt\\kinoproject\\kinoproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|solutionrelative:kinoproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|c:\\htl\\4.klasse\\dbi\\kinoprojekt\\kinoproject\\kinoproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9CB986B6-2048-46B9-B841-BCC38B9F00C9}|Kinoproject\\Kinoproject.csproj|solutionrelative:kinoproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "KinoprojectLibary",
+              "DocumentMoniker": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\KinoprojectLibary\\KinoprojectLibary.csproj",
+              "RelativeDocumentMoniker": "KinoprojectLibary\\KinoprojectLibary.csproj",
+              "ToolTip": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\KinoprojectLibary\\KinoprojectLibary.csproj",
+              "RelativeToolTip": "KinoprojectLibary\\KinoprojectLibary.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-19T16:09:33.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Kinoproject\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Kinoproject\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-19T15:44:28.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Kinoproject",
+              "DocumentMoniker": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\Kinoproject.csproj",
+              "RelativeDocumentMoniker": "Kinoproject\\Kinoproject.csproj",
+              "ToolTip": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\Kinoproject.csproj",
+              "RelativeToolTip": "Kinoproject\\Kinoproject.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-19T15:42:19.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Kinoproject\\appsettings.Development.json",
+              "ToolTip": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\appsettings.Development.json",
+              "RelativeToolTip": "Kinoproject\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-19T15:35:31.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\appsettings.json",
+              "RelativeDocumentMoniker": "Kinoproject\\appsettings.json",
+              "ToolTip": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\appsettings.json",
+              "RelativeToolTip": "Kinoproject\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-19T15:35:27.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\Program.cs",
+              "RelativeDocumentMoniker": "Kinoproject\\Program.cs",
+              "ToolTip": "C:\\HTL\\4.Klasse\\DBI\\KinoProjekt\\Kinoproject\\Kinoproject\\Program.cs",
+              "RelativeToolTip": "Kinoproject\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T15:32:06.788Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

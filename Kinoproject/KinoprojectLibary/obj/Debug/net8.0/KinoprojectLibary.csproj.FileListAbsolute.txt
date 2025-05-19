@@ -1,0 +1,15 @@
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.csproj.AssemblyReference.cache
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.GeneratedMSBuildEditorConfig.editorconfig
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.AssemblyInfoInputs.cache
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.AssemblyInfo.cs
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.csproj.CoreCompileInputs.cache
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.sourcelink.json
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\bin\Debug\net8.0\KinoprojectLibary.deps.json
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\bin\Debug\net8.0\KinoprojectLibary.runtimeconfig.json
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\bin\Debug\net8.0\KinoprojectLibary.dll
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\bin\Debug\net8.0\KinoprojectLibary.pdb
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.dll
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\refint\KinoprojectLibary.dll
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.pdb
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\KinoprojectLibary.genruntimeconfig.cache
+C:\HTL\4.Klasse\DBI\KinoProjekt\Kinoproject\KinoprojectLibary\obj\Debug\net8.0\ref\KinoprojectLibary.dll
