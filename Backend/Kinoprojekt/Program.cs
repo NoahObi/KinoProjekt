@@ -3,6 +3,7 @@ using GrueneisR.RestClientGenerator;
 using Kinoprojekt.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace Kinoprojekt
 {
@@ -11,6 +12,15 @@ namespace Kinoprojekt
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddControllers();
+
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            });
+
+
+
             //builder.Services.AddDbContext<DatabaseContext>(options =>
             //options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddDbContext<DatabaseContext>();
@@ -50,7 +60,7 @@ namespace Kinoprojekt
                 return vorstellungen;
             });
 
-            app.MapPost("/tickets", async ([FromServices]DatabaseContext db, TicketDto ticketDto) =>
+            app.MapPost("/tickets", ([FromServices]DatabaseContext db, TicketDto ticketDto) =>
             {
                 var ticket = new Ticket
                 {
@@ -63,7 +73,7 @@ namespace Kinoprojekt
                 };
 
                 db.Tickets.Add(ticket);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
 
                 // Snacks hinzufügen
                 if (ticketDto.SnackMengen != null)
@@ -77,10 +87,10 @@ namespace Kinoprojekt
                             Menge = snack.Menge,
                         });
                     }
-                    await db.SaveChangesAsync();
+                    db.SaveChanges();
                 }
 
-                return Results.Created($"/tickets/{ticket.Ticketid}", ticket);
+                return ticket;
             });
             
 

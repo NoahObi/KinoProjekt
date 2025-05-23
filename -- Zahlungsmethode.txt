@@ -13,8 +13,8 @@ INSERT INTO Film (FilmID, Titel, Genre, Dauer, Startjahr, Beschreibung) VALUES (
 
 -- Rabattaktion
 INSERT INTO Rabattaktion (RabattID, Name, Prozentsatz, Startdatum, Enddatum, FilmID) 
-VALUES (2, 'Sommeraktion', 10, TO_DATE('2025-06-18', 'YYYY-MM-DD'), TO_DATE('2025-08-21', 'YYYY-MM-DD'), 1);
-
+VALUES (3, 'Sommeraktion', 10, TO_DATE('2025-04-18', 'YYYY-MM-DD'), TO_DATE('2025-08-21', 'YYYY-MM-DD'), 1);
+commit;
 -- Preis
 INSERT INTO Preis (PreisID, Betrag, Beschreibung) VALUES (1, 9.99, 'Standardpreis');
 INSERT INTO Preis (PreisID, Betrag, Beschreibung) VALUES (2, 12.99, 'Premiumpreis');

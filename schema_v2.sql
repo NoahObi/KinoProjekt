@@ -1,4 +1,4 @@
--- Alte Objekte löschen (anpassen, falls nicht existieren)
+
 BEGIN
   FOR rec IN (SELECT object_name, object_type FROM user_objects
               WHERE object_name IN (
@@ -22,7 +22,7 @@ EXCEPTION WHEN OTHERS THEN NULL;
 END;
 /
 
--- Sequenzen anlegen
+
 CREATE SEQUENCE seq_Zahlungsmethode START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_Preis START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_Rabattaktion START WITH 1 INCREMENT BY 1;
@@ -36,7 +36,7 @@ CREATE SEQUENCE seq_Ticket START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_Snack START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_SnackKauf START WITH 1 INCREMENT BY 1;
 
--- Tabellen anlegen
+
 
 CREATE TABLE Zahlungsmethode (
     ZahlungsmethodeID NUMBER PRIMARY KEY,

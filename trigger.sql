@@ -1,0 +1,9 @@
+CREATE OR REPLACE TRIGGER trg_Snack_preis_check
+BEFORE INSERT OR UPDATE ON Snack
+FOR EACH ROW
+BEGIN
+  IF :NEW.PreisID IS NULL THEN
+    RAISE_APPLICATION_ERROR(-20002, 'Snacks müssen einen Preis haben.');
+  END IF;
+END;
+/
